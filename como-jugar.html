@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cómo Jugar - Dinámica Bíblica</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        .instructions-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .instructions-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .instructions-header h1 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        .instructions-header p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .instruction-card {
+            background: var(--card-bg);
+            border: 2px solid rgba(0, 255, 255, 0.3);
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .instruction-card:hover {
+            border-color: var(--neon-cyan);
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.3);
+            transform: translateY(-5px);
+        }
+
+        .instruction-card h2 {
+            font-family: 'Orbitron', sans-serif;
+            color: var(--neon-cyan);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .instruction-card h2 .icon {
+            font-size: 2rem;
+        }
+
+        .instruction-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .instruction-card li {
+            padding: 12px 0;
+            padding-left: 30px;
+            position: relative;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .instruction-card li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: var(--neon-green);
+            font-size: 1.2rem;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            background: rgba(0, 255, 255, 0.1);
+            border: 1px solid rgba(0, 255, 255, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            background: rgba(0, 255, 255, 0.2);
+            border-color: var(--neon-cyan);
+        }
+
+        .feature-item .icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .feature-item h3 {
+            color: var(--neon-green);
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        .feature-item p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 0.95rem;
+        }
+
+        .cta-section {
+            text-align: center;
+            margin-top: 60px;
+            padding: 40px;
+            background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(255, 0, 255, 0.1));
+            border-radius: 20px;
+            border: 2px solid rgba(0, 255, 255, 0.3);
+        }
+
+        .cta-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--neon-cyan);
+        }
+
+        .play-button {
+            display: inline-block;
+            padding: 20px 50px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #ffffff;
+            background: linear-gradient(135deg, var(--neon-cyan), var(--neon-pink));
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .play-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 50px rgba(0, 255, 255, 0.8);
+        }
+
+        .play-button:active {
+            transform: scale(1.05);
+        }
+
+        .scoring-table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .scoring-table th,
+        .scoring-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(0, 255, 255, 0.2);
+        }
+
+        .scoring-table th {
+            color: var(--neon-cyan);
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+
+        .scoring-table td {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .scoring-table tr:hover {
+            background: rgba(0, 255, 255, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .instructions-header h1 {
+                font-size: 2rem;
+            }
+
+            .instruction-card h2 {
+                font-size: 1.4rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .play-button {
+                padding: 15px 35px;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="background-animation">
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+    </div>
+
+    <div class="container">
+        <div class="instructions-container">
+            <div class="instructions-header">
+                <h1>📖 Cómo Jugar</h1>
+                <p>Guía completa para el Desafío Bíblico</p>
+            </div>
+
+            <!-- Objetivo del Juego -->
+            <div class="instruction-card">
+                <h2><span class="icon">🎯</span> Objetivo del Juego</h2>
+                <p>El Desafío Bíblico es una dinámica interactiva diseñada para que los equipos de jóvenes pongan a prueba sus conocimientos sobre la Biblia. El objetivo es responder correctamente la mayor cantidad de preguntas en el menor tiempo posible para acumular puntos y coronarse como el equipo ganador.</p>
+            </div>
+
+            <!-- Cómo Empezar -->
+            <div class="instruction-card">
+                <h2><span class="icon">🚀</span> Cómo Empezar</h2>
+                <ul>
+                    <li><strong>Selecciona tu equipo:</strong> En la pantalla de inicio, elige uno de los 4 equipos disponibles (Equipo Luz, Equipo Fe, Equipo Amor o Equipo Esperanza).</li>
+                    <li><strong>Prepárate:</strong> Una vez seleccionado el equipo, el juego comenzará automáticamente.</li>
+                    <li><strong>Lee atentamente:</strong> Cada pregunta aparecerá en pantalla con 4 opciones de respuesta.</li>
+                </ul>
+            </div>
+
+            <!-- Mecánica del Juego -->
+            <div class="instruction-card">
+                <h2><span class="icon">⚙️</span> Mecánica del Juego</h2>
+                <ul>
+                    <li><strong>10 Preguntas:</strong> Cada partida consta de 10 preguntas sobre temas bíblicos variados.</li>
+                    <li><strong>Tiempo límite:</strong> Tienes 30 segundos para responder cada pregunta. ¡El tiempo corre!</li>
+                    <li><strong>Selecciona tu respuesta:</strong> Haz clic en una de las 4 opciones disponibles.</li>
+                    <li><strong>Retroalimentación inmediata:</strong> Sabrás al instante si tu respuesta fue correcta o incorrecta.</li>
+                    <li><strong>Progreso visual:</strong> Una barra de progreso te mostrará cuántas preguntas has completado.</li>
+                </ul>
+            </div>
+
+            <!-- Sistema de Puntuación -->
+            <div class="instruction-card">
+                <h2><span class="icon">🏆</span> Sistema de Puntuación</h2>
+                <p>Los puntos se calculan en base a dos factores: la precisión y la velocidad.</p>
+                <table class="scoring-table">
+                    <thead>
+                        <tr>
+                            <th>Concepto</th>
+                            <th>Puntos</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Respuesta correcta (base)</td>
+                            <td>+10 puntos</td>
+                        </tr>
+                        <tr>
+                            <td>Bonus por velocidad</td>
+                            <td>Hasta +5 puntos adicionales</td>
+                        </tr>
+                        <tr>
+                            <td>Respuesta incorrecta</td>
+                            <td>0 puntos</td>
+                        </tr>
+                        <tr>
+                            <td>Tiempo agotado</td>
+                            <td>0 puntos</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="margin-top: 15px;"><strong>Puntuación máxima:</strong> 150 puntos (10 preguntas × 15 puntos máximos)</p>
+            </div>
+
+            <!-- Características Especiales -->
+            <div class="instruction-card">
+                <h2><span class="icon">✨</span> Características Especiales</h2>
+                <div class="features-grid">
+                    <div class="feature-item">
+                        <span class="icon">⏱️</span>
+                        <h3>Temporizador Visual</h3>
+                        <p>Observa el tiempo restante en la esquina superior derecha</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">📊</span>
+                        <h3>Ranking en Vivo</h3>
+                        <p>Al finalizar, ve cómo se posiciona tu equipo en la clasificación</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">🎨</span>
+                        <h3>Diseño Neón</h3>
+                        <p>Interfaz moderna con efectos visuales atractivos</p>
+                    </div>
+                    <div class="feature-item">
+                        <span class="icon">📱</span>
+                        <h3>Responsive</h3>
+                        <p>Juega desde cualquier dispositivo: PC, tablet o móvil</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resultados Finales -->
+            <div class="instruction-card">
+                <h2><span class="icon">🎉</span> Resultados Finales</h2>
+                <ul>
+                    <li><strong>Puntuación total:</strong> Al completar las 10 preguntas, verás tu puntuación final.</li>
+                    <li><strong>Mensaje personalizado:</strong> Recibirás un mensaje motivacional basado en tu desempeño.</li>
+                    <li><strong>Clasificación de equipos:</strong> Consulta el ranking completo de todos los equipos participantes.</li>
+                    <li><strong>Jugar de nuevo:</strong> Puedes reiniciar el juego con el mismo equipo o elegir otro diferente.</li>
+                </ul>
+            </div>
+
+            <!-- Consejos -->
+            <div class="instruction-card">
+                <h2><span class="icon">💡</span> Consejos para Ganar</h2>
+                <ul>
+                    <li>Lee cada pregunta con atención antes de responder</li>
+                    <li>No te apresures demasiado, pero tampoco dejes que el tiempo se agote</li>
+                    <li>Si no estás seguro, confía en tu primer instinto</li>
+                    <li>Mantén la calma y disfruta del desafío</li>
+                    <li>Recuerda: ¡el conocimiento bíblico es lo más importante!</li>
+                </ul>
+            </div>
+
+            <!-- Call to Action -->
+            <div class="cta-section">
+                <h2>¿Listo para el Desafío?</h2>
+                <p style="margin-bottom: 30px; font-size: 1.1rem; color: rgba(255, 255, 255, 0.8);">
+                    Pon a prueba tus conocimientos bíblicos y compite con otros equipos
+                </p>
+                <a href="https://dinamicabiblica.vercel.app/" class="play-button" target="_blank">
+                    🎮 Ir al Juego
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

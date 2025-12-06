@@ -189,6 +189,44 @@ body {
     font-weight: 600;
 }
 
+/* Botón Cómo Jugar */
+.how-to-play-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.how-to-play-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #ffffff;
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.2), rgba(255, 0, 255, 0.2));
+    border: 2px solid var(--neon-cyan);
+    border-radius: 50px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+    backdrop-filter: blur(10px);
+}
+
+.how-to-play-btn span {
+    margin-right: 8px;
+}
+
+.how-to-play-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 40px rgba(0, 255, 255, 0.6);
+    border-color: var(--neon-pink);
+    background: linear-gradient(135deg, rgba(0, 255, 255, 0.3), rgba(255, 0, 255, 0.3));
+}
+
+.how-to-play-btn:active {
+    transform: translateY(-1px);
+}
+
 /* Selección de Equipos */
 .team-selection {
     text-align: center;
