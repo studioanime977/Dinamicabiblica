@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dinámica Bíblica - Encuentro de Jóvenes</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-animation">
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+        <div class="neon-circle"></div>
+    </div>
+
+    <div class="container">
+        <!-- Pantalla de Inicio -->
+        <div id="welcome-screen" class="screen active">
+            <div class="logo-container">
+                <div class="cross-icon">📓</div>
+                <h1 class="neon-title">DESAFÍO BÍBLICO</h1>
+                <p class="subtitle">Encuentro de Jóvenes</p>
+            </div>
+            
+            <div class="welcome-content">
+                <p class="verse">"Lámpara es a mis pies tu palabra, y lumbrera a mi camino"</p>
+                <p class="verse-ref">- Salmos 119:105</p>
+            </div>
+
+            <div class="team-selection">
+                <h2>Selecciona tu Equipo</h2>
+                <div class="team-buttons">
+                    <button class="team-btn" data-team="1" style="--team-color: #00ff88">
+                        <span class="team-number">1</span>
+                        <span class="team-name">Equipo Luz</span>
+                    </button>
+                    <button class="team-btn" data-team="2" style="--team-color: #00d4ff">
+                        <span class="team-number">2</span>
+                        <span class="team-name">Equipo Fe</span>
+                    </button>
+                    <button class="team-btn" data-team="3" style="--team-color: #ff00ff">
+                        <span class="team-number">3</span>
+                        <span class="team-name">Equipo Amor</span>
+                    </button>
+                    <button class="team-btn" data-team="4" style="--team-color: #ffff00">
+                        <span class="team-number">4</span>
+                        <span class="team-name">Equipo Esperanza</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Juego -->
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div class="team-info">
+                    <span class="current-team"></span>
+                </div>
+                <div class="score-info">
+                    <span class="score-label">Puntos:</span>
+                    <span class="score-value">0</span>
+                </div>
+                <div class="timer-info">
+                    <span class="timer-icon">⏱</span>
+                    <span class="timer-value">30</span>
+                </div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-number">Pregunta <span id="current-question">1</span> de <span id="total-questions">10</span></div>
+                <h2 class="question-text" id="question-text"></h2>
+                
+                <div class="answers-grid" id="answers-grid">
+                    <!-- Las respuestas se generarán dinámicamente -->
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Pantalla de Resultados -->
+        <div id="results-screen" class="screen">
+            <div class="results-container">
+                <h1 class="results-title">¡Juego Completado!</h1>
+                
+                <div class="final-score">
+                    <div class="score-circle">
+                        <span class="final-score-value">0</span>
+                        <span class="score-max">/ 100</span>
+                    </div>
+                </div>
+
+                <div class="results-message">
+                    <p class="message-text"></p>
+                    <p class="verse-result"></p>
+                </div>
+
+                <div class="ranking-container">
+                    <h2>Clasificación de Equipos</h2>
+                    <div id="ranking-list" class="ranking-list">
+                        <!-- Se llenará dinámicamente -->
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="btn-primary" onclick="playAgain()">
+                        <span>🔄</span> Jugar de Nuevo
+                    </button>
+                    <button class="btn-secondary" onclick="showAllScores()">
+                        <span>📊</span> Ver Todas las Puntuaciones
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
