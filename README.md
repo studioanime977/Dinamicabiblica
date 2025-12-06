@@ -18,7 +18,7 @@ Una aplicación web interactiva con diseño neón moderno para realizar dinámic
 
 ## 🎮 Cómo Usar
 
-1. **Abrir el enlace en el navegador  `index.html`** en cualquier navegador web moderno
+1. **Abrir el enlace en el navegador  `https://dinamicabiblica.vercel.app/`** en cualquier navegador web moderno
 2. **Seleccionar un equipo** de los 4 disponibles
 3. **Responder las preguntas** antes de que se acabe el tiempo
 4. **Ver los resultados** y el ranking de equipos al finalizar
